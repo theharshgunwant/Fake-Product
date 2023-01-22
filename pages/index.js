@@ -32,7 +32,7 @@ export default class Index extends Component {
   // company manager address
   handleSubmit = async (event) => {
     // console.log(this.state.managerId);
-    const accounts = await web3.eth.getAccounts();
+    const accounts = await ethereum.send('eth_requestAccounts');
     console.log(accounts[0]);
 
     const cmpyDetail = await Detector.methods
@@ -68,7 +68,7 @@ export default class Index extends Component {
 
   // user signing through metamask
   userHandleSubmit = async (event) => {
-    const accounts = await web3.eth.getAccounts();
+    const accounts = await ethereum.send('eth_requestAccounts');
     console.log(accounts[0]);
     this.setState({
       errorMessage: "",
@@ -113,7 +113,7 @@ export default class Index extends Component {
     });
 
     try {
-      const accounts = await web3.eth.getAccounts();
+      const accounts = await ethereum.send('eth_requestAccounts');
       console.log(accounts[0]);
 
       await Detector.methods
